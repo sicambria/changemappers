@@ -1,2 +1,20 @@
-# changemappers
+# Changemappers
 Changemakers want to solve big social problems. Changemappers help them find &amp; support each other and long-lasting impactful systemic change.
+
+Project page: https://pozi.io/project/f71ff149-b5b9-4ee9-bd7a-a757a1497267
+
+## Customer
+People who organize communities or volunteer regularly to help their local communities towards systemic changes.
+
+## Customer problem
+Many changemakers feel alone in their own community as innovators. They struggle with problems that are already solved elsewhere.
+
+## Solution
+Connect changemakers based on values, geolocation, interest and availability across borders. Connect them to relevant solutions.
+
+## Product/Service
+Changemappers provide a platform where people dedicated for systemic change can find each other and solutions to social challenges.
+
+## Competitive advantages
+Focused to the needs of changemakers, help self-organizing. Increasing volunteering. Timing. Privacy-centered, transparent, open-source.
+
