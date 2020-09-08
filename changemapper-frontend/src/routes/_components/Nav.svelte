@@ -31,6 +31,11 @@
 						{$session.user.username}
 					</a>
 				</li>
+				<li class="nav-item">
+					<a rel='prefetch' href="/feed" class="nav-link">
+						Feed
+					</a>
+				</li>
 			{:else}
 				<li class="nav-item">
 					<a rel='prefetch' href="/login" class="nav-link" class:active="{$page.path === '/login'}">

@@ -23,6 +23,9 @@
 		<span class="date">
 			{new Date(article.createdAt).toDateString()}
 		</span>
+		<span class="text-capitalize font-italic">
+			{article.type}
+		</span>
 	</div>
 
 	{#if canModify}
