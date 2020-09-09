@@ -131,8 +131,6 @@
 							class:field-success={$addressValidity.valid}
 							use:addressValidate={article.addressPath}
 							/>
-							AddressPath = {article.addressPath}
-							SelectedLocation = {article.selectedLocation}
 							<Locator showError={!$addressValidity.valid} 
 							showSuccess={$addressValidity.valid}
 							bind:addressPath={article.addressPath} 
