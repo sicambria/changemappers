@@ -1,6 +1,10 @@
 # Changemappers
 Changemakers want to solve big social problems. Changemappers help them find &amp; support each other and long-lasting impactful systemic change.
 
+[![Total alerts](https://img.shields.io/lgtm/alerts/g/sicambria/changemappers.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/sicambria/changemappers/alerts/)
+
+[![Maintainability](https://api.codeclimate.com/v1/badges/53254684674c9a5608db/maintainability)](https://codeclimate.com/github/sicambria/changemappers/maintainability)
+
 Project page: https://pozi.io/project/f71ff149-b5b9-4ee9-bd7a-a757a1497267
 
 ## Customer
