@@ -12,7 +12,9 @@ var UserSchema = new mongoose.Schema({
   favorites: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Article' }],
   following: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
   hash: String,
-  salt: String
+  salt: String,
+  addressPath: String,
+  selectedLocation: {type: mongoose.Schema.Types.Mixed}
 }, {timestamps: true});
 
 UserSchema.plugin(uniqueValidator, {message: 'is already taken.'});
@@ -45,7 +47,9 @@ UserSchema.methods.toAuthJSON = function(){
     email: this.email,
     token: this.generateJWT(),
     bio: this.bio,
-    image: this.image
+    image: this.image,
+    addressPath: this.addressPath,
+    selectedLocation: this.selectedLocation
   };
 };
 
@@ -54,13 +58,17 @@ UserSchema.methods.toProfileJSONFor = function(user){
     username: this.username,
     bio: this.bio,
     image: this.image || 'https://static.productionready.io/images/smiley-cyrus.jpg',
-    following: user ? user.isFollowing(this._id) : false
+    following: user ? user.isFollowing(this._id) : false,
+    addressPath: this.addressPath,
+    selectedLocation: this.selectedLocation
   };
 };
 
 UserSchema.methods.favorite = function(id){
   if(this.favorites.indexOf(id) === -1){
-    this.favorites.push(id);
+    let favs = JSON.parse(JSON.stringify(this.favorites));
+    favs.push(id);
+    this.favorites = favs;
   }
 
   return this.save();
@@ -79,7 +87,9 @@ UserSchema.methods.isFavorite = function(id){
 
 UserSchema.methods.follow = function(id){
   if(this.following.indexOf(id) === -1){
-    this.following.push(id);
+    let follows = JSON.parse(JSON.stringify(this.following));
+    follows.push(id);
+    this.following = follows;
   }
 
   return this.save();

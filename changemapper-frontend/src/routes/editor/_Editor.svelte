@@ -3,14 +3,14 @@
 	import ListErrors from '../_components/ListErrors.svelte';
 	import * as api from 'api.js';
 	import Locator from '../_components/Locator/index.svelte';
-	import { requiredValidator, minLengthValidator, maxLengthValidator } from './validators.js'
-  import { createFieldValidator } from './validation.js'
+	import { requiredValidator, minLengthValidator, maxLengthValidator } from '../_components/shared/validators.js'
+    import { createFieldValidator } from '../_components/shared/validation.js'
 
-  const [ validity, validate ] = createFieldValidator(requiredValidator(), minLengthValidator(15), maxLengthValidator(100))
-  const [ avalidity, avalidate ] = createFieldValidator(requiredValidator(), minLengthValidator(50), maxLengthValidator(200))
-  const [ bvalidity, bvalidate ] = createFieldValidator(requiredValidator(), minLengthValidator(250), maxLengthValidator(2000))
-  const [ addressValidity, addressValidate ] = createFieldValidator(requiredValidator())
-	
+	const [ validity, validate ] = createFieldValidator(requiredValidator(), minLengthValidator(15), maxLengthValidator(100))
+	const [ avalidity, avalidate ] = createFieldValidator(requiredValidator(), minLengthValidator(50), maxLengthValidator(200))
+	const [ bvalidity, bvalidate ] = createFieldValidator(requiredValidator(), minLengthValidator(250), maxLengthValidator(2000))
+	const [ addressValidity, addressValidate ] = createFieldValidator(requiredValidator())
+		
 
 
 	export let article;

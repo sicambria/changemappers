@@ -47,6 +47,7 @@ router.get('/', auth.optional, function(req, res, next) {
 
   Promise.all([
     req.query.author ? User.findOne({username: req.query.author}) : null,
+    req.query.type ? User.findOne({type: req.query.type}) : null,
     req.query.favorited ? User.findOne({username: req.query.favorited}) : null
   ]).then(function(results){
     var author = results[0];
@@ -131,7 +132,6 @@ router.post('/', auth.required, function(req, res, next) {
     article.author = user;
 
     return article.save().then(function(){
-      console.log(article.author);
       return res.json({article: article.toJSONFor(user)});
     });
   }).catch(next);
@@ -254,7 +254,9 @@ router.post('/:article/comments', auth.required, function(req, res, next) {
     comment.author = user;
 
     return comment.save().then(function(){
-      req.article.comments.push(comment);
+      let coms = JSON.parse(JSON.stringify(req.article.comments));
+      coms.push(comment);
+      req.article.comments = coms;
 
       return req.article.save().then(function(article) {
         res.json({comment: comment.toJSONFor(user)});

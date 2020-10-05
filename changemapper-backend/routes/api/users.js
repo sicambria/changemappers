@@ -32,6 +32,12 @@ router.put('/user', auth.required, function(req, res, next){
     if(typeof req.body.user.password !== 'undefined'){
       user.setPassword(req.body.user.password);
     }
+    if(typeof req.body.user.addressPath !== 'undefined'){
+      user.addressPath =req.body.user.addressPath;
+    }
+    if(typeof req.body.user.selectedLocation !== 'undefined'){
+      user.selectedLocation = req.body.user.selectedLocation;
+    }
 
     return user.save().then(function(){
       return res.json({user: user.toAuthJSON()});
@@ -60,12 +66,28 @@ router.post('/users/login', function(req, res, next){
   })(req, res, next);
 });
 
+router.get('/users', function(req, res, next) {
+  // User.findById(req.payload.id).then(function(user){
+  //   if(!user){ return res.sendStatus(401); }
+
+  //   return res.json({user: user.toAuthJSON()});
+  // }).catch(next);
+
+  User.find({}, {'username': 1}).then(function(users){
+    if(!users){ return res.sendStatus(401); }
+
+    return res.json({users});
+  }).catch(next);
+
+});
+
 router.post('/users', function(req, res, next){
   var user = new User();
-
   user.username = req.body.user.username;
   user.email = req.body.user.email;
   user.setPassword(req.body.user.password);
+  user.addressPath = req.body.user.addressPath,
+  user.selectedLocation = req.body.user.selectedLocation
 
   user.save().then(function(){
     return res.json({user: user.toAuthJSON()});

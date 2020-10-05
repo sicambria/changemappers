@@ -26,7 +26,7 @@
 	$: markup = marked(article.body);
 
 	onMount(() => {
-		api.get(`articles/${slug}/comments`).then((res) => {
+		api.get(`articles/${slug}/comments`,$session.user.token).then((res) => {
 			comments = res.comments;
 		});
 	});

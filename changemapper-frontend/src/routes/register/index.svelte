@@ -10,20 +10,26 @@
 	import { goto, stores } from '@sapper/app';
 	import ListErrors from '../_components/ListErrors.svelte';
 	import { post } from 'utils.js';
+	import Locator from '../_components/Locator/index.svelte';
+	import { requiredValidator } from '../_components/shared/validators.js'
+	import { createFieldValidator } from '../_components/shared/validation.js'
+	
 
+	const [ addressValidity, addressValidate ] = createFieldValidator(requiredValidator())
 	const { session } = stores();
 
 	let username = '';
 	let email = '';
 	let password = '';
 	let errors = null;
+	let addressPath = null;
+	let selectedLocation = null;
 
 	async function submit(event) {
-		const response = await post(`auth/register`, { username, email, password });
+		const response = await post(`auth/register`, { username, email, password, addressPath, selectedLocation });
 
 		// TODO handle network errors
 		errors = response.errors;
-
 		if (response.user) {
 			$session.user = response.user;
 			goto('/');
@@ -56,6 +62,17 @@
 					<fieldset class="form-group">
 						<input class="form-control form-control-lg" type="password" required placeholder="Password" bind:value={password}>
 					</fieldset>
+					<fieldset class="form-group">
+						<input style="display: none;" class="form-control"
+							bind:value={addressPath}
+							class:field-danger={!$addressValidity.valid}
+							class:field-success={$addressValidity.valid}
+							use:addressValidate={addressPath}
+						/>
+						<Locator showError={!$addressValidity.valid} showSuccess={$addressValidity.valid} bind:addressPath={addressPath} 
+							bind:selectedLocation={selectedLocation}
+						></Locator>
+					</fieldset>
 					<button class="btn btn-lg btn-primary pull-xs-right">
 						Sign up
 					</button>
@@ -64,3 +81,17 @@
 		</div>
 	</div>
 </div>
+
+<style>
+
+	.field-danger {
+		color: rgb(245, 76, 24);
+		border:1px solid rgb(245, 76, 24);
+	}
+	
+	.field-success {
+		color: rgb(170, 241, 3);
+		border:1px solid rgb(170, 241, 3);
+	}
+	
+</style>

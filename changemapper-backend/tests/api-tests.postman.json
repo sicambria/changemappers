@@ -47,7 +47,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\"user\":{\"email\":\"john@jacob.com\", \"password\":\"johnnyjacob\", \"username\":\"johnjacob\"}}"
+              "raw": "{\"user\": {\"username\":\"mani3\",\"email\":\"mani3@gmail.com\",\"password\":\"asdfgh\",\"addressPath\":\"Isla de Vieques, undefined, United States of America\",\"selectedLocation\":{\"geometry\":{\"coordinates\":[-65.45727892482296,18.1215941],\"type\":\"Point\"},\"type\":\"Feature\",\"properties\":{\"osm_id\":253642,\"osm_type\":\"R\",\"extent\":[-65.5782239,18.1628857,-65.2669608,18.0803383],\"country\":\"United States of America\",\"osm_key\":\"place\",\"osm_value\":\"island\",\"postcode\":\"00765\",\"name\":\"Isla de Vieques\",\"state\":\"Puerto Rico\"}}}}"
             },
             "description": ""
           },
@@ -272,6 +272,8 @@
                 "        tests['Article\\'s \"tagList\" property is an Array'] = Array.isArray(article.tagList);",
                 "        tests['Article has \"author\" property'] = article.hasOwnProperty('author');",
                 "        tests['Article has \"favorited\" property'] = article.hasOwnProperty('favorited');",
+                "        tests['Article has \"selectedLocation\" property'] = article.hasOwnProperty('selectedLocation');",
+                "        tests['Article has \"addressPath\" property'] = article.hasOwnProperty('addressPath');",
                 "        tests['Article has \"favoritesCount\" property'] = article.hasOwnProperty('favoritesCount');",
                 "        tests['favoritesCount is an integer'] = Number.isInteger(article.favoritesCount);",
                 "    } else {",

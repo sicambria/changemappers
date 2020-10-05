@@ -86,7 +86,6 @@
                 if(curLocMarker) 
                     map.removeLayer(curLocMarker);
                 if(keepSingleLocation) markerLayers.clearLayers();
-                console.log(e.latlng); // e is an event object (MouseEvent in this case)
                 curLocMarker = L.marker(e.latlng).addTo(map);
                 dispatch("pin_updated", e.latlng);
             })

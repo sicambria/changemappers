@@ -52,7 +52,7 @@
 		</ul>
 	</div>
 
-	<div style="display:flex; flex-direction:row; position:absolute;">
+	<div>
 		<ArticleList {p} {tab} {tag}/>
 	</div>
 </div>

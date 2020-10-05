@@ -14,6 +14,8 @@
     export let showError = null;
     export let showSuccess = null;
 
+    $: if(selectedLocation != null) onLocationSelection(selectedLocation)
+
     const testgetAddress = debounce(e => {
         addressPath = null;
         selectedLocation = null;
@@ -26,26 +28,26 @@
 		const data = await response.json();
 
 		if (response.ok) {
-            debugger;
 			return data;
 		} else {
-            debugger;
 			throw new Error(data);
 		}
 
     }
     
-    function onLocationSelection(e) {
-        let info = JSON.parse(e.target.dataset.info);
-        markers = [[info.geometry.coordinates[1], info.geometry.coordinates[0]]];
-        addressPath = `${info.properties.name}, ${info.properties.city}, ${info.properties.country}`;
+    function onLocationSelection(selectedLocation) {
+        markers = [[selectedLocation.geometry.coordinates[1], selectedLocation.geometry.coordinates[0]]];
+        addressPath = `${selectedLocation.properties.name}, ${selectedLocation.properties.city}, ${selectedLocation.properties.country}`;
         address = addressPath;
-        selectedLocation = info;
+        
+    }
+
+    function onRowSelection(e) {
+        let location = JSON.parse(e.target.dataset.info);
+        selectedLocation = location;
     }
 
     async function onPinUpate(e) {
-        console.log(e);
-        //e.detail.lat.lng
         const response = await api.getExternal(`https://photon.komoot.de/reverse/?lat=${e.detail.lat}&lon=${e.detail.lng}` );
         const data = await response.json();
         if (response.ok) {
@@ -74,14 +76,14 @@
             on:keyup = {e => testgetAddress(address)}
             on:blur = {e => showList = false}
             on:focus = {e => showList = true}
-            bind:value={address}
+            bind:value= {address}
             type="text" placeholder="Enter address here..."/>
             
         {#if showList}
             {#await locationsService}
                 <ul class="list-group waiting"><li class="list-group-item">Loading</li></ul>
             {:then locs}
-                <ul class="list-group" on:mousedown={onLocationSelection}>
+                <ul class="list-group" on:mousedown={onRowSelection}>
                     {#if locs && locs.features.length > 0}
                         {#each locs.features as o, i}
                         <li class="list-group-item-action" data-info={JSON.stringify(o)}>{o.properties.name}</li>
