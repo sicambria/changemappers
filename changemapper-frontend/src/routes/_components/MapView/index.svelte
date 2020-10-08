@@ -83,8 +83,7 @@
         map = createMap(container); 
         if(pinLocation === true) {
             map.on('click',function(e) {
-                if(curLocMarker) 
-                    map.removeLayer(curLocMarker);
+                if(curLocMarker) map.removeLayer(curLocMarker);
                 if(keepSingleLocation) markerLayers.clearLayers();
                 curLocMarker = L.marker(e.latlng).addTo(map);
                 dispatch("pin_updated", e.latlng);
@@ -107,6 +106,7 @@
 
         if(L && map){
             if(markerLayers)markerLayers.clearLayers();
+            if(curLocMarker) map.removeLayer(curLocMarker);
             for(let location of markers) {
                  let m = L.marker(location);
                 if(m) markerLayers.addLayer(m);
