@@ -9,7 +9,7 @@ describe('Sapper template app', () => {
 	});
 
 	it('has the correct <h1>', () => {
-		cy.contains('h1', 'conduit')
+		cy.contains('h1', 'Changemappers')
 	});
 
 	// TODO more tests!
@@ -21,7 +21,7 @@ describe('Sapper template app', () => {
 		cy.contains('h1', 'Sign up')
 
 		cy.visit('/');
-		cy.contains('h1', 'conduit')
+		cy.contains('h1', 'Changemappers')
 
 		cy.visit('/register');
 		cy.contains('h1', 'Sign up')

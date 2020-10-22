@@ -12,6 +12,7 @@
         export let showToolbar;
         export let keepSingleLocation;
         export let height = 'calc(100vh - 56px);';
+        export let width = '100%';
         export let zoomLevel = 12;
         let map;
         let MyComponent;
@@ -24,7 +25,7 @@
         let toolbarComponent;
         let markerLayers;
     
-    const initialView = [39.8283, -98.5795];
+    const initialView = markers[0] || [39.8283, -98.5795];
 
     onMount(async () => {
         const module = await import('leaflet');
@@ -141,7 +142,7 @@
       </svelte:head>
       
 
-      <div style="height:{height}" class="container-fluid" bind:this={mapDom} />
+      <div style="height:{height};width:{width}" class="container-fluid" bind:this={mapDom} />
       
       
       <svelte:window on:resize={resizeMap} />

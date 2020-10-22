@@ -38,7 +38,7 @@
 </script>
 
 <svelte:head>
-	<title>Sign up • Conduit</title>
+	<title>Sign up • Changemappers</title>
 </svelte:head>
 
 <div class="auth-page">

@@ -5,9 +5,7 @@
 	import * as api from 'api.js';
 	import UsersDropdown from './UsersDropdown.svelte';
 	import Dropdown from './Dropdown.svelte';
-	// export let tab, username = false;
-	// export let favorites = false;
-	// export let tag;
+
 	export let p;
 	export let selectedArticle = {slug: ''};
 	const dispatch = createEventDispatcher();
@@ -15,16 +13,26 @@
 	const { session, page } = stores();
 
 	let query;
+	let selectedUser;
+	let selectedArticleType;
 	let articles;
 	let articlesCount;
 	let actionsData = [
+		{
+			key: "any",
+			label: "Any",
+		},
 		{
 			key: "information",
 			label: "Information", 
 		},
 		{
-			key: "data",
-			label: "Data", 
+			key: "question",
+			label: "Questions", 
+		},
+		{
+			key: "initiative",
+			label: "Initiative", 
 		},
 	];
 
@@ -34,6 +42,8 @@
 		const page_size =  10;
 
 		let params = `limit=${page_size}&offset=${(p - 1) * page_size}`;
+		if (selectedUser) params += `&author=${selectedUser}`;
+		if (selectedArticleType) params += `&type=${selectedArticleType}`;
 		// if (tab === 'tag') params += `&tag=${tag}`;
 		// if (tab === 'profile') params += `&${favorites ? 'favorited' : 'author'}=${encodeURIComponent(username)}`;
 
@@ -53,7 +63,16 @@
 
 		selectedArticle = article;
 		dispatch('selection', selectedArticle);
+	}
 
+	function onPostTypeSelection(e) {
+		let value = e.detail.getAttribute("data-key");
+		selectedArticleType = (value.toLowerCase() == "any") ? null : value;
+	}
+
+	function onUserSelection(e) {
+		let value = e.detail.getAttribute("data-label");
+		selectedUser = (value.toLowerCase() == "any") ? null : value;
 	}
 </script>
 
@@ -86,6 +105,7 @@
 	.info-container .info {
 		padding-left: 15px;
     	line-height: 1rem;
+		width: 100%;
 	}
 	.info-container .info .author {
 		font-weight: 500;
@@ -95,11 +115,12 @@
 		font-size: 10px;
 	}
 	.filters-container {
-		background-color: #f7f7f7;
+		background-color: #f7f7f79e;
 		padding: 20px;
 		border-radius: 5px;
-		box-shadow: 0px 20px 20px #dad4d4;
+		box-shadow: 1px 1px 5px #DCDCDA;
 		margin-top: 10px;
+
 	}
 	.filter-wrapper.first {
 		margin-bottom: 10px;
@@ -108,6 +129,7 @@
 	.filter-wrapper {
 		display: flex;
 		justify-content: space-between;
+		flex-wrap: wrap;
 	}
 	.filter-wrapper > div {
 		line-height: 32px;
@@ -121,11 +143,11 @@
 	<h3>Filters</h3>
 	<div class="filter-wrapper first">
 		<div>Post Types:</div>
-		<Dropdown placeholder="Select Post Type" data="{actionsData}"></Dropdown>
+		<Dropdown placeholder="Select Post Type" data="{actionsData}" on:itemSelection={onPostTypeSelection}></Dropdown>
 	</div>
 	<div class="filter-wrapper">
 		<div>Users:</div>
-		<UsersDropdown></UsersDropdown>
+		<UsersDropdown  on:userSelection={onUserSelection}></UsersDropdown>
 	</div>
 </div>
 
@@ -151,17 +173,18 @@
 								{new Date(article.createdAt).toDateString()}
 							</span>
 						</div>
-					</div>
-			
-					
-			
-					{#if $session.user}
+						{#if $session.user}
 						<div class="pull-xs-right">
-							<button class='btn btn-sm {article.favorited ? "btn-primary" : "btn-outline-primary"}'>
+							<button class='btn btn-sm disable' style="color: black;">
 								<i class="ion-heart"></i> {article.favoritesCount}
 							</button>
 						</div>
 					{/if}
+					</div>
+			
+					
+			
+					
 				</div>
 			{/each}
 

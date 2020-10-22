@@ -1,5 +1,9 @@
 <script>
+    import { createEventDispatcher } from 'svelte';
+    
     let showActionsDropdown = false;
+    const dispatch = createEventDispatcher();
+
     export let data;
     export let placeholder = "Please Select";
 
@@ -8,6 +12,7 @@
     function onItemSelection(event) {
         showActionsDropdown = !showActionsDropdown;
         selectedElement = event.target;
+        dispatch('itemSelection', selectedElement);
     }
 
 </script>

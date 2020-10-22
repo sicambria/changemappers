@@ -22,7 +22,7 @@
 </script>
 
 <svelte:head>
-	<title>{profile.username} • Conduit</title>
+	<title>{profile.username} • Changemappers</title>
 </svelte:head>
 
 <div class="profile-page">

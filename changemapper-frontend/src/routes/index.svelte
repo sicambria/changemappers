@@ -13,12 +13,44 @@
 	}
 </script>
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-sm-3" style="padding-right:20px;height:calc(100vh - 56px);overflow-y:scroll">
-            <ArticleListView on:selection={onArticleSelection}/>
-        </div>
-        <div class="col-sm-9" style="padding-left:0px;">
-            <MapView height="100%" bind:markers={markers} pinLocation={true} showToolbar={false} zoomLevel={4}/>
+    <div class="article-list-container" >
+        <ArticleListView on:selection={onArticleSelection}/>
+    </div>
+    <div class="map-container">
+        <div class="map">
+
+            <MapView height="100%" bind:markers={markers} pinLocation={true} showToolbar={false} zoomLevel={8}/>
         </div>
     </div>
+    
 </div>
+
+<style>
+    .container-fluid {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap-reverse;
+    }
+    .article-list-container {
+        min-width: 300px;
+        width: 300px;
+        flex-grow: 1;
+        padding-right:20px;
+        height:calc(100vh - 56px);
+        overflow-y:scroll
+    }
+    .map-container {
+        width:300px;
+        flex-grow: 5;
+        min-width: 300px;
+        display: flex;
+    flex-direction: column;
+    }
+    .map {
+        height: 300px;
+    display: flex;
+    flex-grow: 1;
+    position: relative;
+    width: 100%;
+    }
+</style>

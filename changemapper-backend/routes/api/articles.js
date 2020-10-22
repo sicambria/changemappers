@@ -45,10 +45,15 @@ router.get('/', auth.optional, function(req, res, next) {
     query.tagList = {"$in" : [req.query.tag]};
   }
 
+  if( typeof req.query.type !== 'undefined' ){
+    query.type = req.query.type;
+  }
+
   Promise.all([
     req.query.author ? User.findOne({username: req.query.author}) : null,
     req.query.type ? User.findOne({type: req.query.type}) : null,
-    req.query.favorited ? User.findOne({username: req.query.favorited}) : null
+    req.query.favorited ? User.findOne({username: req.query.favorited}) : null,
+    req.query.type ? User.findOne({type: req.query.type}) : null,
   ]).then(function(results){
     var author = results[0];
     var favoriter = results[1];

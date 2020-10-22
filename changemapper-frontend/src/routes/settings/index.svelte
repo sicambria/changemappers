@@ -37,7 +37,7 @@
 </script>
 
 <svelte:head>
-	<title>Settings • Conduit</title>
+	<title>Settings • Changemappers</title>
 </svelte:head>
 
 <div class="settings-page">

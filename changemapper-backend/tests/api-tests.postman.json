@@ -1,7 +1,7 @@
 {
   "variables": [],
   "info": {
-    "name": "Conduit API Tests",
+    "name": "Changemappers API Tests",
     "_postman_id": "dda3e595-02d7-bf12-2a43-3daea0970192",
     "description": "Collection for testing the Conduit API\n\nhttps://github.com/gothinkster/realworld",
     "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"

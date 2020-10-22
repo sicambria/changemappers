@@ -1,6 +1,6 @@
 {
   "id": "4aa60b52-97fc-456d-4d4f-14a350e95dff",
-  "name": "Conduit API Tests - Environment",
+  "name": "Changemappers API Tests - Environment",
   "values": [{
     "enabled": true,
     "key": "apiUrl",
