@@ -7,9 +7,19 @@
 	];
 	
 	function onArticleSelection(event) {
-		markers = [
+        markers = [];
+        if(Array.isArray(event.detail)) {
+            for (var i=0; i< event.detail.length; i++){
+                let detail = event.detail[i];
+                markers.push([detail.selectedLocation.geometry.coordinates[1], detail.selectedLocation.geometry.coordinates[0]]);
+            }
+
+        } else  {
+            markers = [
 			[event.detail.selectedLocation.geometry.coordinates[1], event.detail.selectedLocation.geometry.coordinates[0]]
-		]
+            ]
+        }
+        
 	}
 </script>
 <div class="container-fluid">

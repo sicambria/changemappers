@@ -42,8 +42,8 @@
 		const page_size =  10;
 
 		let params = `limit=${page_size}&offset=${(p - 1) * page_size}`;
-		if (selectedUser) params += `&author=${selectedUser}`;
-		if (selectedArticleType) params += `&type=${selectedArticleType}`;
+		if (selectedUser && selectedUser != 'any') params += `&author=${selectedUser}`;
+		if (selectedArticleType && selectedArticleType != 'any') params += `&type=${selectedArticleType}`;
 		// if (tab === 'tag') params += `&tag=${tag}`;
 		// if (tab === 'profile') params += `&${favorites ? 'favorited' : 'author'}=${encodeURIComponent(username)}`;
 
@@ -67,12 +67,20 @@
 
 	function onPostTypeSelection(e) {
 		let value = e.detail.getAttribute("data-key");
-		selectedArticleType = (value.toLowerCase() == "any") ? null : value;
+		selectedArticleType = (value.toLowerCase() == "any") ? 'any' : value;
+		debugger;
+		if (selectedArticleType === 'any' && selectedUser === 'any') {
+			dispatch('selection', articles)
+		}
 	}
 
 	function onUserSelection(e) {
 		let value = e.detail.getAttribute("data-label");
-		selectedUser = (value.toLowerCase() == "any") ? null : value;
+		selectedUser = (value.toLowerCase() == "any") ? 'any' : value;
+		debugger;
+		if (selectedArticleType === 'any' && selectedUser === 'any') {
+			dispatch('selection', articles)
+		}
 	}
 </script>
 

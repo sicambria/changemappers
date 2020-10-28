@@ -45,7 +45,7 @@
                 toolbarComponent.$on('click-eye', ({ detail }) => eye = detail);
                 toolbarComponent.$on('click-lines', ({ detail }) => lines = detail);
                 toolbarComponent.$on('click-reset', () => {
-                    map.setView(initialView, zoomLevel, { animate: true });
+                    map.setView(initialView, zoomLevel, { animate: false });
                 });
 
                 return div;
@@ -66,7 +66,8 @@
         
       
     function createMap(container) {
-        let m = L.map(container, {preferCanvas: true }).setView(initialView, zoomLevel);
+        let m = L.map(container).setView(initialView, zoomLevel, {animate: false});
+        
         L.tileLayer(
             'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
             {
