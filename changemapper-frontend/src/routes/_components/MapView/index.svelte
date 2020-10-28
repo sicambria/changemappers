@@ -66,7 +66,7 @@
         
       
     function createMap(container) {
-        let m = L.map(container).setView(initialView, zoomLevel, {animate: false});
+        let m = L.map(container).setView(initialView, 2, {animate: false});
         
         L.tileLayer(
             'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',

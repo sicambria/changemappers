@@ -68,7 +68,6 @@
 	function onPostTypeSelection(e) {
 		let value = e.detail.getAttribute("data-key");
 		selectedArticleType = (value.toLowerCase() == "any") ? 'any' : value;
-		debugger;
 		if (selectedArticleType === 'any' && selectedUser === 'any') {
 			dispatch('selection', articles)
 		}
@@ -77,7 +76,6 @@
 	function onUserSelection(e) {
 		let value = e.detail.getAttribute("data-label");
 		selectedUser = (value.toLowerCase() == "any") ? 'any' : value;
-		debugger;
 		if (selectedArticleType === 'any' && selectedUser === 'any') {
 			dispatch('selection', articles)
 		}
