@@ -2,6 +2,12 @@
 	import { stores } from '@sapper/app';
 
 	const { page, session } = stores();
+
+	async function logout() {
+		await post(`auth/logout`);
+		$session.user = null;
+		goto('/');
+	}
 </script>
 
 <nav class="navbar navbar-light">
@@ -9,7 +15,13 @@
 		<a rel='prefetch' class="navbar-brand" href=".">Changemappers</a>
 		<ul class="nav navbar-nav pull-xs-right">
 			<li class="nav-item">
-				<a rel='prefetch' class="nav-link" class:active="{$page.path === '/'}" href="/">Home</a>
+				<a rel='prefetch' class="nav-link" class:active="{$page.path === '/'}" href="/">Map</a>
+			</li>
+
+			<li class="nav-item">
+				<a rel='prefetch' href="/feed" class="nav-link">
+					Feed
+				</a>
 			</li>
 
 			{#if $session.user}
@@ -18,24 +30,22 @@
 						<i class="ion-compose"></i>&nbsp;New Post
 					</a>
 				</li>
-
-				<li class="nav-item">
-					<a rel='prefetch' href="/settings" class="nav-link" class:active="{$page.path === '/settings'}">
-						<i class="ion-gear-a"></i>&nbsp;Settings
-					</a>
-				</li>
+					
 
 				<li class="nav-item">
 					<a rel='prefetch' href='/profile/@{$session.user.username}' class="nav-link">
 						<!-- <img src={$user.image} class="user-pic" alt={$user.username}> -->
+						<i class="ion-person"></i>
 						{$session.user.username}
 					</a>
-				</li>
+				</li>		
+
 				<li class="nav-item">
-					<a rel='prefetch' href="/feed" class="nav-link">
-						Feed
+					<a href="/" on:click={logout()} class="nav-link" >
+						<i class="ion-log-out"></i>&nbsp;Log out
 					</a>
 				</li>
+
 			{:else}
 				<li class="nav-item">
 					<a rel='prefetch' href="/login" class="nav-link" class:active="{$page.path === '/login'}">
