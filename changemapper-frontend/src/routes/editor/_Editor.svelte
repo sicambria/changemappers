@@ -6,9 +6,9 @@
 	import { requiredValidator, minLengthValidator, maxLengthValidator } from '../_components/shared/validators.js'
     import { createFieldValidator } from '../_components/shared/validation.js'
 
-	const [ validity, validate ] = createFieldValidator(requiredValidator(), minLengthValidator(15), maxLengthValidator(100))
-	const [ avalidity, avalidate ] = createFieldValidator(requiredValidator(), minLengthValidator(50), maxLengthValidator(200))
-	const [ bvalidity, bvalidate ] = createFieldValidator(requiredValidator(), minLengthValidator(250), maxLengthValidator(2000))
+	const [ validity, validate ] = createFieldValidator(requiredValidator(), minLengthValidator(10), maxLengthValidator(100))
+	const [ avalidity, avalidate ] = createFieldValidator(requiredValidator(), minLengthValidator(30), maxLengthValidator(200))
+	const [ bvalidity, bvalidate ] = createFieldValidator(requiredValidator(), minLengthValidator(100), maxLengthValidator(3000))
 	const [ addressValidity, addressValidate ] = createFieldValidator(requiredValidator())
 		
 
@@ -177,8 +177,8 @@
 }
 
 .field-success {
-	color: rgb(170, 241, 3);
-	border:1px solid rgb(170, 241, 3);
+	color: rgb(13, 102, 55);
+	border:1px solid rgb(6, 56, 29);
 }
 
 .validation-hint{
