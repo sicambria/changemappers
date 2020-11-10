@@ -109,12 +109,14 @@
         if(L && map){
             if(markerLayers)markerLayers.clearLayers();
             if(curLocMarker) map.removeLayer(curLocMarker);
+
+
             for(let location of markers) {
                  let m = L.marker(location);
                 if(m) markerLayers.addLayer(m);
              }
              if(markers[0]) {
-                 map.flyTo(markers[0], zoomLevel);
+                 map.setView(markers[0]);            
              }
         }
     }
