@@ -7,19 +7,24 @@
 		await post(`auth/logout`);
 		$session.user = null;
 		goto('/');
-	}
+}
+
+// icons: https://themeon.net/nifty/v2.9.1/icons-ionicons.html
 </script>
 
 <nav class="navbar navbar-light">
 	<div class="container">
 		<a rel='prefetch' class="navbar-brand" href=".">Changemappers</a>
 		<ul class="nav navbar-nav pull-xs-right">
-			<li class="nav-item">
-				<a rel='prefetch' class="nav-link" class:active="{$page.path === '/'}" href="/">Map</a>
+			<li class="nav-item">				
+				<a rel='prefetch' class="nav-link" class:active="{$page.path === '/'}" href="/">
+					<i class="ion-ios-location"></i>
+					Map</a>
 			</li>
 
 			<li class="nav-item">
-				<a rel='prefetch' href="/feed" class="nav-link">
+				<a rel='prefetch' href="/feed" class="nav-link" class:active="{$page.path === '/feed'}">
+					<i class="ion-ios-people"></i>
 					Feed
 				</a>
 			</li>
@@ -33,10 +38,9 @@
 					
 
 				<li class="nav-item">
-					<a rel='prefetch' href='/profile/@{$session.user.username}' class="nav-link">
+					<a rel='prefetch' href='/profile/@{$session.user.username}' class="nav-link" class:active="{$page.path === '/profile/@{$session.user.username}'}">
 						<!-- <img src={$user.image} class="user-pic" alt={$user.username}> -->
-						<i class="ion-person"></i>
-						{$session.user.username}
+						<i class="ion-person"></i>{$session.user.username}
 					</a>
 				</li>		
 
