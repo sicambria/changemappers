@@ -24,7 +24,7 @@
 
 	async function getAddress(input) {
 
-		const response = await api.getExternal("https://photon.komoot.de/api/?q=" + input);
+		const response = await api.getExternal("https://photon.komoot.io/api/?q=" + input);
 		const data = await response.json();
 
 		if (response.ok) {
@@ -48,7 +48,7 @@
     }
 
     async function onPinUpate(e) {
-        const response = await api.getExternal(`https://photon.komoot.de/reverse/?lat=${e.detail.lat}&lon=${e.detail.lng}` );
+        const response = await api.getExternal(`https://photon.komoot.io/reverse/?lat=${e.detail.lat}&lon=${e.detail.lng}` );
         const data = await response.json();
         if (response.ok) {
             if(data.features[0]){
