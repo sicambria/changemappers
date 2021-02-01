@@ -1,0 +1,21 @@
+{
+  "name": "changemappers",
+  "version": "0.0.1",
+  "description": "Changemakers want to solve big social problems. Changemappers help them find &amp; support each other and long-lasting impactful systemic change.",
+  "main": "index.js",
+  "scripts": {
+    "preinstall": "cd changemapper-backend && npm i",
+    "postinstall": "cd changemapper-frontend && npm i"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sicambria/changemappers.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sicambria/changemappers/issues"
+  },
+  "homepage": "https://github.com/sicambria/changemappers#readme"
+}

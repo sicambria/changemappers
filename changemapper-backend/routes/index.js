@@ -1,5 +1,10 @@
-var router = require('express').Router();
+var router = require("express").Router();
 
-router.use('/api', require('./api'));
+router.use((req, res, next) => {
+  console.log(req.method + ":", req.url);
+  next();
+});
+
+router.use("/api", require("./api"));
 
 module.exports = router;

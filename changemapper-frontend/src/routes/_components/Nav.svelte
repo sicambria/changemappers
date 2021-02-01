@@ -1,5 +1,9 @@
 <script>
-	import { stores } from '@sapper/app';
+	import { stores, goto } from '@sapper/app';
+	import { post } from 'utils.js';
+
+	export let segment = "";
+	segment;
 
 	const { page, session } = stores();
 
@@ -45,7 +49,7 @@
 				</li>		
 
 				<li class="nav-item">
-					<a href="/" on:click={logout()} class="nav-link" >
+					<a href="/" on:click|preventDefault={logout} class="nav-link" >
 						<i class="ion-log-out"></i>&nbsp;Log out
 					</a>
 				</li>

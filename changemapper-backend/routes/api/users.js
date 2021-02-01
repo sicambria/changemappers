@@ -90,6 +90,7 @@ router.post('/users', function(req, res, next){
   user.selectedLocation = req.body.user.selectedLocation
 
   user.save().then(function(){
+    console.log("saved success");
     return res.json({user: user.toAuthJSON()});
   }).catch(next);
 });

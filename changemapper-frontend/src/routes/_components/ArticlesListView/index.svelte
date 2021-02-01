@@ -6,7 +6,7 @@
 	import UsersDropdown from './UsersDropdown.svelte';
 	import Dropdown from './Dropdown.svelte';
 
-	export let p;
+	export let p = undefined;
 	export let selectedArticle = {slug: ''};
 	const dispatch = createEventDispatcher();
 
