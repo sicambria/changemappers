@@ -1,5 +1,5 @@
 {
-  "name": "Changemappers-node",
+  "name": "changemappers-node",
   "version": "1.0.0",
   "description": "Changemappers on node",
   "main": "app.js",
