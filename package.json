@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "preinstall": "cd changemapper-backend && npm i",
-    "postinstall": "cd changemapper-frontend && npm i"
+    "postinstall": "cd changemapper-frontend && npm i",
+    "start": "cd changemapper-backend && npm start"
   },
   "repository": {
     "type": "git",
