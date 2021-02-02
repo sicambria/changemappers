@@ -1,5 +1,5 @@
 {
-  "name": "svelte-realworld",
+  "name": "changemapper-frontend",
   "description": "A Svelte/Sapper implementation of RealWorld",
   "version": "0.0.1",
   "scripts": {
