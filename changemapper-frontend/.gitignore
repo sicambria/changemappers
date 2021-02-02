@@ -12,3 +12,4 @@ yarn-error.log
 /app/manifest/
 /.sessions/
 /.vscode
+.vercel
