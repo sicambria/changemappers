@@ -6,7 +6,7 @@
   "scripts": {
     "preinstall": "cd changemapper-backend && npm i",
     "postinstall": "cd changemapper-frontend && npm i",
-    "start": "cd changemapper-backend && npm start"
+    "start": "if [ \"$BACKEND\" != \"\" ]; then cd changemapper-backend && npm start; else cd changemapper-frontend && npm start;  fi;"
   },
   "repository": {
     "type": "git",
