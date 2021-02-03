@@ -16,11 +16,11 @@ Many changemakers feel alone in their own community as innovators. They struggle
 ## Solution
 Connect changemakers based on values, geolocation, interest and availability across borders. Connect them to relevant solutions.
 
-## Product/Service
+## Platform
 Changemappers provide a platform where people dedicated for systemic change can find each other and solutions to social challenges.
 
-## Competitive advantages
-Focused to the needs of changemakers, help self-organizing. Increasing volunteering. Timing. Privacy-centered, transparent, open-source.
+## Unique value set
+Focused on the needs of changemakers, supporting self-organization. Map-centered simple and visual interface. Increasing volunteering. Timing. Privacy-centered, transparent, open-source.
 
 # Licence
 GNU Affero General Public License v3
