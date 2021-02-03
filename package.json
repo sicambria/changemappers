@@ -4,9 +4,9 @@
   "description": "Changemakers want to solve big social problems. Changemappers help them find &amp; support each other and long-lasting impactful systemic change.",
   "main": "index.js",
   "scripts": {
-    "preinstall": "cd changemapper-backend && npm i",
-    "postinstall": "cd changemapper-frontend && npm i",
-    "start": "if [ \"$BACKEND\" != \"\" ]; then cd changemapper-backend && npm start; else cd changemapper-frontend && npm start;  fi;"
+    "preinstall": "cd changemappers-backend && npm i",
+    "postinstall": "cd changemappers-frontend && npm i",
+    "start": "if [ \"$BACKEND\" != \"\" ]; then cd changemappers-backend && npm start; else cd changemappers-frontend && npm start;  fi;"
   },
   "repository": {
     "type": "git",
@@ -14,7 +14,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "AGPLv3",
   "bugs": {
     "url": "https://github.com/sicambria/changemappers/issues"
   },
