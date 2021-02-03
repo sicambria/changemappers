@@ -23,4 +23,5 @@ Changemappers provide a platform where people dedicated for systemic change can 
 Focused to the needs of changemakers, help self-organizing. Increasing volunteering. Timing. Privacy-centered, transparent, open-source.
 
 # Licence
+GNU Affero General Public License v3
 https://www.gnu.org/licenses/agpl-3.0.en.html
