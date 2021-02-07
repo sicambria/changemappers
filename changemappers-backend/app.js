@@ -1,3 +1,6 @@
+const dotenv = require("dotenv")
+dotenv.config()
+
 var http = require('http'),
     path = require('path'),
     methods = require('methods'),
@@ -31,9 +34,12 @@ if (!isProduction) {
 }
 
 if(isProduction){
-  mongoose.connect(process.env.MONGODB_URI);
+  //mongoose.connect(process.env.MONGODB_URI);
+  mongoose.connect("mongodb+srv://changemapperscluster0.2jooi.mongodb.net/cmdb?retryWrites=true&w=majority", {user: process.env.MONGO_USER, pass: process.env.MONGO_PASSWORD, useNewUrlParser: true, useUnifiedTopology: true});
 } else {
-  mongoose.connect('mongodb://localhost/conduit');
+  mongoose.connect("mongodb+srv://changemapperscluster0.2jooi.mongodb.net/cmdb?retryWrites=true&w=majority", {user: process.env.MONGO_USER, pass: process.env.MONGO_PASSWORD, useNewUrlParser: true, useUnifiedTopology: true});
+  
+
   mongoose.set('debug', true);
 }
 
