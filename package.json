@@ -4,11 +4,9 @@
   "description": "Changemakers want to solve big social problems. Changemappers help them find &amp; support each other and long-lasting impactful systemic change.",
   "main": "index.js",
   "scripts": {
-    "build": "cd changemappers-frontend && npm run build",
-    "client": "cd changemappers-frontend && npm run dev",
-    "start": "cd changemappers-backend && nodemon start",
-    "heroku-postbuild": "npm run client"
-  
+    "preinstall": "cd changemappers-backend && npm i && npm run dev",
+    "postinstall": "cd changemappers-frontend && npm i && npm run build",
+    "start": "concurrently \"cd changemappers-backend && nodemon start\" \"cd changemappers-frontend && npm run dev\""
   },
   "repository": {
     "type": "git",
@@ -19,9 +17,6 @@
   "license": "AGPLv3",
   "bugs": {
     "url": "https://github.com/sicambria/changemappers/issues"
-  },
-  "engines": {
-    "node": "14.x"
   },
   "homepage": "https://github.com/sicambria/changemappers#readme"
 }
