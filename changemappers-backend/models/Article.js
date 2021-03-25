@@ -34,7 +34,7 @@ ArticleSchema.methods.slugify = function() {
 ArticleSchema.methods.updateFavoriteCount = function() {
   var article = this;
 
-  return User.count({favorites: {$in: [article._id]}}).then(function(count){
+  return User.countDocuments({favorites: {$in: [article._id]}}).then(function(count){
     article.favoritesCount = count;
 
     return article.save();

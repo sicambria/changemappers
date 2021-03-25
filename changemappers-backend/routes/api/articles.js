@@ -75,7 +75,7 @@ router.get('/', auth.optional, function(req, res, next) {
         .sort({createdAt: 'desc'})
         .populate('author')
         .exec(),
-      Article.count(query).exec(),
+      Article.countDocuments(query).exec(),
       req.payload ? User.findById(req.payload.id) : null,
     ]).then(function(results){
       var articles = results[0];
@@ -113,7 +113,7 @@ router.get('/feed', auth.required, function(req, res, next) {
         .skip(Number(offset))
         .populate('author')
         .exec(),
-      Article.count({ author: {$in: user.following}})
+      Article.countDocuments({ author: {$in: user.following}})
     ]).then(function(results){
       var articles = results[0];
       var articlesCount = results[1];
