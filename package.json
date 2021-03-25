@@ -6,7 +6,7 @@
   "scripts": {
     "preinstall": "cd changemappers-backend && npm i && npm run dev",
     "postinstall": "cd changemappers-frontend && npm i && npm run build",
-    "start": "cd changemappers-backend && nodemon start; cd changemappers-frontend && npm run dev;"
+    "start": "cd changemappers-backend && npm start; cd changemappers-frontend && npm run dev;"
   },
   "repository": {
     "type": "git",
