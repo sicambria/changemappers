@@ -5,7 +5,7 @@ Changemakers want to solve big social problems. Changemappers help them find &am
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/53254684674c9a5608db/maintainability)](https://codeclimate.com/github/sicambria/changemappers/maintainability)
 
-Project page: https://pozi.io/project/f71ff149-b5b9-4ee9-bd7a-a757a1497267
+Project page: https://hackmd.io/@jovokepzok/changemappers
 
 ## Customer
 People who organize communities or volunteer regularly to help their local communities towards systemic changes.
